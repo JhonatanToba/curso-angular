@@ -1,0 +1,7 @@
+
+<form autocomplete="off">
+    <input name ="mensaje" [formControl] = "mensaje" (keypress)="enviarEnter($event)">
+    <!--(keypress)="enviarEnter($evento)"-->
+    <input type="button" value="Enviar" (click)="enviar()" >
+</form>
+

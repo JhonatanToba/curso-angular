@@ -1,0 +1,24 @@
+<!--{{fecha|date: 'dd/MM/yyyy - hh:mm:ss aa'}}-->
+
+<div class="contact" *ngFor="let contact of list" (click)="show(contact)">
+    <img [src]="'https://ui-avatars.com/api/?background=random&size=200&bold=true&uppercase=true&name=' + contact.name" [title]="contact.name">
+    <div [title]="contact.lastMessage">
+        {{contact.name}}
+        
+        <!-- <div *ngIf="checkToday(contact.lastDate)">
+            {{ contact.lastDate |date: 'hh:mm a'}}
+        </div>
+
+        <div *ngIf="checkYesterday(contact.lastDate)">
+            Ayer
+        </div>
+
+        <div *ngIf="checkOther(contact.lastDate)">
+            Menos
+        </div> -->
+    </div>
+
+    
+
+    <!--{{contact.lastDate | date: 'hh'}}-->
+</div>

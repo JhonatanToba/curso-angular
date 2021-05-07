@@ -23,7 +23,6 @@ export class ListComponent implements OnInit {
   }; */
 
   list: any = [];
-
   /* listado = [];
     // tslint:disable-next-line: typedef
   for(item: any,  of: any, res: object) {
@@ -35,8 +34,6 @@ export class ListComponent implements OnInit {
 
   show(contact: any): void{
     this.service.showContact.emit(contact);
-    this.service.verificar.subscribe(
-      this.service.confirmar.emit(contact));
   }
 
   checkToday(lastDate: Date): boolean{
@@ -61,12 +58,17 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(res => {
-      for (const i  of Object.values(res)) {
+       this.list = (res as any[]).map(x => {
+        x.mensajes = [];
+        return x;
+      });
+      /* for (const i  of Object.values(res)) {
         i.mensajes = [];
-      }
-      this.list = res;
+      } */
     });
   }
+
+
 // Get es para obtener
 // Put es para actualizar toda la información
 // Patch es para actualizar un dato de la información

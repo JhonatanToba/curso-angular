@@ -10,33 +10,15 @@ export class PrincipalComponent implements OnInit {
 
   constructor(private service: ChatService) { }
 
-  mensaje: string[] = [];
-  name: any = [];
-  persona = '';
-  nombre: boolean | undefined ;
-  historial!: '';
+  name: any = {};
 
   ngOnInit(): void {
-    this.service.envioMensaje.subscribe(val => {
-      this.mensaje.push(val);
-      console.log(this.mensaje);
+    this.service.showContact.subscribe(val => {
+      this.name = val;
     });
 
-    this.service.confirmar.subscribe(contacto => {
-      this.nombre = this.name.find((item: any) => item === contacto.name);
-      this.persona = contacto.name;
-      console.log(this.mensaje);
-      if (this.nombre === contacto.name) {
-        this.historial = this.name.indexOf(contacto.name);
-        /* this.name[contacto.name + 1] = this.mensaje; */
-        this.name[this.historial + 1] = this.mensaje;
-        this.mensaje = this.name[this.historial + 1];
-        
-      } else {
-        this.name.push(contacto.name, contacto.mensaje);
-        this.historial = this.name.indexOf(contacto.name);
-        this.mensaje = [];
-      }
+    this.service.envioMensaje.subscribe(mss => {
+        this.name.mensajes.push(mss);
     });
   }
 }
